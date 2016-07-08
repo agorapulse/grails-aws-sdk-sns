@@ -1,4 +1,4 @@
-Grails AWS SDK SES Plugin
+Grails AWS SDK SNS Plugin
 =========================
 
 [![Build Status](https://travis-ci.org/agorapulse/grails-aws-sdk-sns.svg?branch=master)](https://travis-ci.org/agorapulse/grails-aws-sdk-sns)
@@ -111,7 +111,7 @@ The plugin provides the following Grails artefacts:
 
 * **AmazonSNSService**
 
-## Registering a mobile
+## Registering a mobile device
 
 Once you get a device token, you can register the mobile and get the mobile endpoint arn.
 
@@ -123,9 +123,9 @@ endpointArn = amazonSNSService.registerDevice(
 )
 ```
 
-## Validating a mobile token
+## Validating a mobile device
 
-Once in while, you might validate a mobile endpoint arn: if required (e.g.: token or platform changes), it will update it by deleting the old endpoint and create a new one.
+Once in while, you might validate a mobile endpoint arn: if required (e.g.: token or platform changes), it will update the endpoint by deleting the old one and create a new one.
 
 ```groovy
 endpointArn = amazonSNSService.validateDevice(
@@ -136,7 +136,7 @@ endpointArn = amazonSNSService.validateDevice(
 )
 ```
 
-## Pushing a notification to a mobile
+## Pushing a notification to a mobile device
 
 Once, you have the mobile endpoint arn, you can easily push notification to it:
 
