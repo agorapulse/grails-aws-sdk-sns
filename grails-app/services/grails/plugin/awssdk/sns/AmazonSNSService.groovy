@@ -5,9 +5,9 @@ import com.amazonaws.regions.Region
 import com.amazonaws.services.sns.AmazonSNS
 import com.amazonaws.services.sns.AmazonSNSClient
 import com.amazonaws.services.sns.model.*
-import grails.converters.JSON
 import grails.core.GrailsApplication
 import grails.plugin.awssdk.AwsClientUtil
+import groovy.json.JsonOutput
 import groovy.util.logging.Log4j
 import org.springframework.beans.factory.InitializingBean
 
@@ -226,19 +226,21 @@ class AmazonSNSService implements InitializingBean  {
                                        boolean delayWhileIdle = true,
                                        int timeToLive = 125,
                                        boolean dryRun = false) {
-        new JSON([
+        // Note: we don't use JSON converters here because there required grails-plugin-converters, which required servlet classes
+        JsonOutput.toJson([
                 collapse_key: collapseKey,
                 data: data,
                 delay_while_idle: delayWhileIdle,
                 time_to_live: timeToLive,
                 dry_run: dryRun
-        ]).toString()
+        ])
     }
 
     private String buildIosMessage(Map data) {
-        new JSON([
+        // Note: we don't use JSON converters here because there required grails-plugin-converters, which required servlet classes
+        JsonOutput.toJson([
                 aps: data
-        ]).toString()
+        ])
     }
 
     private String createPlatformEndpoint(String platformApplicationArn,
@@ -294,8 +296,9 @@ class AmazonSNSService implements InitializingBean  {
     private String publish(String endpointArn,
                            String platform,
                            String message) {
+        // Note: we don't use JSON converters here because there required grails-plugin-converters, which required servlet classes
         PublishRequest request = new PublishRequest(
-                message: new JSON([(platform): message]).toString(),
+                message: JsonOutput.toJson([(platform): message]),
                 messageStructure: 'json',
                 targetArn: endpointArn, // For direct publish to mobile end points, topicArn is not relevant.
         )
