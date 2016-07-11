@@ -38,7 +38,7 @@ repositories {
 
 dependencies {
   ...
-  compile 'org.grails.plugins:aws-sdk-sns:2.0.0-alpha1'
+  compile 'org.grails.plugins:aws-sdk-sns:2.0.0-beta1'
   ...
 }
 ```
@@ -169,6 +169,16 @@ amazonSNSService.sendIosAppNotification(
         badge: 9,
         sound: 'default'
     ]
+)
+```
+
+## Unregister a mobile device
+
+To delete a mobile endpoint.
+
+```groovy
+endpointArn = amazonSNSService.unregisterDevice(
+    endpointArn
 )
 ```
 
