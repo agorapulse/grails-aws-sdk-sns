@@ -47,6 +47,13 @@ dependencies {
 
 Create an AWS account [Amazon Web Services](http://aws.amazon.com/), in order to get your own credentials accessKey and secretKey.
 
+Required permissions:
+
+* "sns:CreatePlatformEndpoint",
+* "sns:DeleteEndpoint",
+* "sns:GetEndpointAttributes",
+* "sns:Publish",
+* "sns:SetEndpointAttributes"
 
 ## AWS SDK for Java version
 
