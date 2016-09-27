@@ -8,13 +8,11 @@ import com.amazonaws.services.sns.model.*
 import grails.core.GrailsApplication
 import grails.plugin.awssdk.AwsClientUtil
 import groovy.json.JsonOutput
-import groovy.util.logging.Log4j
 import org.springframework.beans.factory.InitializingBean
 
 import java.util.regex.Matcher
 import java.util.regex.Pattern
 
-@Log4j
 class AmazonSNSService implements InitializingBean  {
 
     static SERVICE_NAME = AmazonSNS.ENDPOINT_PREFIX
