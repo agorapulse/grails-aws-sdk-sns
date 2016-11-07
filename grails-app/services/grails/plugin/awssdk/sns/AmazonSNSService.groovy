@@ -307,7 +307,7 @@ class AmazonSNSService implements InitializingBean  {
         try {
             result = client.publish(request)
         } catch (Exception e) {
-            log.error e
+            log.error 'An exception was catched while publishing',  e
         }
         result ? result.messageId : ''
     }
